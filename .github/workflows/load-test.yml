@@ -1,0 +1,52 @@
+# Credit: https://www.geekytidbits.com/dynamic-number-of-jobs-in-github-action-workflow/
+#
+name: Load Test
+on:
+  workflow_dispatch:
+    inputs:
+      number_of_jobs:
+        description: "Number of Jobs (up to 256)"
+        required: true
+        type: string
+        default: "256"
+
+jobs:
+  setup-job-matrix:
+    name: "📦 Setup Job Matrix"
+    runs-on: ubuntu-latest
+    outputs:
+      job-strategy-matrix: ${{ steps.generate.outputs.job-strategy-matrix }}
+    steps:
+      - uses: actions/github-script@v6
+        env:
+          NUMBER_OF_JOBS: ${{ github.event.inputs.number_of_jobs }}
+        id: generate
+        with:
+          script: |
+            const jobs = [...Array(parseInt(process.env.NUMBER_OF_JOBS)).keys()]
+            core.setOutput('job-strategy-matrix', JSON.stringify(jobs))
+
+  az-job:
+    name: "🏋️ Load Test"
+    needs: setup-job-matrix
+    runs-on: [self-hosted, az-vm]
+    strategy:
+      matrix:
+        job: ${{ fromJSON(needs.setup-job-matrix.outputs.job-strategy-matrix) }}
+    steps:
+      - run: |
+          echo "Hai from az-vm"
+          sleep 300
+          echo "Bye"
+  k8s-job:
+    name: "🏋️ Load Test"
+    needs: setup-job-matrix
+    runs-on: [self-hosted, k8s]
+    strategy:
+      matrix:
+        job: ${{ fromJSON(needs.setup-job-matrix.outputs.job-strategy-matrix) }}
+    steps:
+      - run: |
+          echo "Hai from k8s"
+          sleep 300
+          echo "Bye"
