@@ -27,7 +27,7 @@ jobs:
             core.setOutput('job-strategy-matrix', JSON.stringify(jobs))
 
   az-job:
-    name: "🏋️ Load Test"
+    name: "Azure VM Load Test"
     needs: setup-job-matrix
     runs-on: [self-hosted, az-vm]
     strategy:
@@ -39,7 +39,7 @@ jobs:
           sleep 300
           echo "Bye"
   k8s-job:
-    name: "🏋️ Load Test"
+    name: "Kubernetes Load Test"
     needs: setup-job-matrix
     runs-on: [self-hosted, k8s]
     strategy:
