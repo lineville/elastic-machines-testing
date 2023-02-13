@@ -21,3 +21,4 @@
   scale:
     - minimumMachines: 0
       maximumMachines: 40
+      maximumIdleMachines: 1
