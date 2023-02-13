@@ -14,6 +14,7 @@
 - provider: kubernetes-pod@v0
   name: kubernetes
   labels: [k8s]
+  ephemeral: false
   with:
     namespace: elastic-machines-dev
     containerImage: ubuntu:focal
