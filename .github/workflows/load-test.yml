@@ -26,18 +26,18 @@ jobs:
             const jobs = [...Array(parseInt(process.env.NUMBER_OF_JOBS)).keys()]
             core.setOutput('job-strategy-matrix', JSON.stringify(jobs))
 
-  az-job:
-    name: "Azure VM Load Test"
-    needs: setup-job-matrix
-    runs-on: [self-hosted, az-vm]
-    strategy:
-      matrix:
-        job: ${{ fromJSON(needs.setup-job-matrix.outputs.job-strategy-matrix) }}
-    steps:
-      - run: |
-          echo "Hai from az-vm"
-          sleep 300
-          echo "Bye"
+  #az-job:
+    #name: "Azure VM Load Test"
+    #needs: setup-job-matrix
+    #runs-on: [self-hosted, az-vm]
+    #strategy:
+      #matrix:
+        #job: ${{ fromJSON(needs.setup-job-matrix.outputs.job-strategy-matrix) }}
+    #steps:
+      #- run: |
+          #echo "Hai from az-vm"
+          #sleep 300
+          #echo "Bye"
   k8s-job:
     name: "Kubernetes Load Test"
     needs: setup-job-matrix
