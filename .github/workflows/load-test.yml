@@ -48,5 +48,5 @@ jobs:
     steps:
       - run: |
           echo "Hai from k8s"
-          sleep 300
+          sleep 30
           echo "Bye"
