@@ -1,15 +1,15 @@
-- provider: azure-virtual-machine@v0
-  name: kubernetes
-  labels: [az-vm]
-  with:
-    subscription: 685eed17-13cd-4ade-96cd-28ed2e0c4d53
-    resourceGroup: elastic-machines-dev
-    location: West US 3
-    image: Canonical:UbuntuServer:18.04-LTS:latest
-    vmSku: Standard_DS1_v2
-  scale:
-    - minimumMachines: 0
-      maximumMachines: 40
+# - provider: azure-virtual-machine@v0
+#   name: kubernetes
+#   labels: [az-vm]
+#   with:
+#     subscription: 685eed17-13cd-4ade-96cd-28ed2e0c4d53
+#     resourceGroup: elastic-machines-dev
+#     location: West US 3
+#     image: Canonical:UbuntuServer:18.04-LTS:latest
+#     vmSku: Standard_DS1_v2
+#   scale:
+#     - minimumMachines: 0
+#       maximumMachines: 40
 
 - provider: kubernetes-pod@v0
   name: kubernetes
