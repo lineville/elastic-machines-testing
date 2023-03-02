@@ -11,12 +11,12 @@
     - minimumMachines: 0
       maximumMachines: 40
 
-- provider: kubernetes-pod@v0
-  name: kubernetes
-  labels: [k8s]
-  with:
-    namespace: elastic-machines-dev
-    containerImage: ubuntu:focal
-  scale:
-    - minimumMachines: 0
-      maximumMachines: 40
+# - provider: kubernetes-pod@v0
+#   name: kubernetes
+#   labels: [k8s]
+#   with:
+#     namespace: elastic-machines-dev
+#     containerImage: ubuntu:focal
+#   scale:
+#     - minimumMachines: 0
+#       maximumMachines: 40
