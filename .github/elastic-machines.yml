@@ -1,5 +1,5 @@
 - provider: azure-virtual-machine@v0
-  name: kubernetes
+  name: kubernetes-1
   labels: [az-vm]
   with:
     subscription: 685eed17-13cd-4ade-96cd-28ed2e0c4d53
